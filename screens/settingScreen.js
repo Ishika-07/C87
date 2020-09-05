@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Keyboa
 import db from '../config';
 import firebase from 'firebase';
 
+
 export default class SettingScreen extends React.Component{
 
     constructor(){
@@ -59,7 +60,13 @@ export default class SettingScreen extends React.Component{
                 <View>
                     <ScrollView>
                         <KeyboardAvoidingView>
-                            <Text>Registration</Text>
+                            <Text style={{fontWeight: '500',
+                                          fontSize:30,
+                                          alignSelf:'center',
+                                          paddingBotttom:30,
+                                          color:'red'}}>
+                              Registration
+                              </Text>
 
                             <TextInput
                             style={styles.formTextInput}
@@ -137,11 +144,13 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         borderRadius:25,
+        marginTop:20,
         backgroundColor:"#FF5F49",
         shadowColor: "#000",
+        alignSelf:'center',
         shadowOffset: {
            width: 0,
            height: 8,
-        }
+        },
     }
 })
