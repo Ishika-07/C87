@@ -13,8 +13,8 @@ import {
     import db from '../config.js';
 
   export default class RecieverDetails extends React.Component{
-      constructor(){
-          super()
+      constructor(props){
+          super(props)
           this.state={
               userId: firebase.auth().currentUser.email,
               recieverId    : this.props.navigation.getParam('details')['user_id'],
@@ -31,7 +31,7 @@ import {
           db.collection('users').where('email_id','==',this.state.recieverId).get().then((snapshot)=>{
             snapshot.forEach((doc)=>{
                 this.setState({
-                    recieverName    : doc.data().first_name,
+                    recieverName    : doc.data().firstName,
                     recieverContact : doc.data().contact,
                     recieverAddress : doc.data().address,
                   })
@@ -54,7 +54,7 @@ import {
           name           : this.state.name,
           request_id          : this.state.requestId,
           requested_by        : this.state.recieverName,
-          donor_id            : this.state.userId,
+          user_id            : this.state.userId,
           request_status      :  "Interested"
         })
       }
@@ -108,7 +108,7 @@ import {
                       style={styles.button}
                       onPress={()=>{
                         this.updatStatus()
-                        this.props.navigation.navigate('MyExchnges')
+                        this.props.navigation.navigate('MyExchanges')
                       }}>
                     <Text>I want to Donate</Text>
                   </TouchableOpacity>

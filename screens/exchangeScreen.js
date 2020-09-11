@@ -20,12 +20,12 @@ export default class ExchangeScreen extends React.Component{
       }
 
       componentWillUnmount(){
-        this.requestRef()
+        this.requestRef
       }
 
       getRequestedList=()=>{
           this.requestRef = db.collection('requests') .onSnapshot((snapshot)=>{
-            var requestedList = snapshot.docs.map(document => document.data());
+            var requestedList = snapshot.docs.map(doc => doc.data());
             this.setState({
               requestedList : requestedList
             });
@@ -39,11 +39,11 @@ export default class ExchangeScreen extends React.Component{
         return(
           <ListItem 
             key={i}
-            title={item.book_name}
+            title={item.item_name}
             subtitle={item.reason_to_request}
             titleStyle={{ color: 'black', fontWeight: 'bold' }}
             rightElement={
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={this.props.navigation.navigate('RecieverDetails')}>
                   <Text style={{color:'#ffff'}}>Exchange</Text>
                 </TouchableOpacity>
               }

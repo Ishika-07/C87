@@ -27,8 +27,8 @@ export default class SettingScreen extends React.Component{
                   var data = doc.data()
                   this.setState({
                       emailId: data.email_id,
-                      firstName: data.first_name,
-                      lastName: data.last_name,
+                      firstName: data.firstName,
+                      lastName: data.lastName,
                       address: data.address,
                       contact: data.contact,
                       docId:doc.id
@@ -40,8 +40,8 @@ export default class SettingScreen extends React.Component{
       }
       updateData=()=>{
         db.collection('users').doc(this.state.docId).update({
-            "first_name": this.state.firstName,
-            "last_name": this.state.lastName,
+            "firstName": this.state.firstName,
+            "lastName": this.state.lastName,
             "address": this.state.address,
             "contact": this.state.contact
         })
