@@ -110,7 +110,7 @@ import {
                         this.updatStatus()
                         this.props.navigation.navigate('MyExchanges')
                       }}>
-                    <Text>I want to Donate</Text>
+                    <Text>I want to Exchange</Text>
                   </TouchableOpacity>
                 )
                 : null

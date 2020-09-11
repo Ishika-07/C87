@@ -39,7 +39,7 @@ export default class MyExchanges extends React.Component{
           snapshot.docs.map((doc) =>{
             var exchange = doc.data()
             exchange["doc_id"] = doc.id
-            allExchanges.push(donation)
+            allExchanges.push(exchange)
           });
           this.setState({
             allExchanges : allExchanges
