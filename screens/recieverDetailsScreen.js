@@ -14,7 +14,7 @@ import {
 
   export default class RecieverDetails extends React.Component{
       constructor(props){
-          super(props)
+            super(props);
           this.state={
               userId: firebase.auth().currentUser.email,
               recieverId    : this.props.navigation.getParam('details')['user_id'],
@@ -107,7 +107,7 @@ import {
                   <TouchableOpacity
                       style={styles.button}
                       onPress={()=>{
-                        this.updatStatus()
+                        this.updateStatus()
                         this.props.navigation.navigate('MyExchanges')
                       }}>
                     <Text>I want to Exchange</Text>

@@ -48,7 +48,7 @@ export default class RequestScreen extends React.Component{
                     name: text
                 })
             }}
-            value={this.state.bookName}
+            value={this.state.name}
             />
 
             <TextInput

@@ -6,8 +6,8 @@ import db from '../config'
 import MyHeader from '../components/MyHeader';
 
 export default class ExchangeScreen extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
           requestedList : []
         }
@@ -24,12 +24,14 @@ export default class ExchangeScreen extends React.Component{
       }
 
       getRequestedList=()=>{
-          this.requestRef = db.collection('requests') .onSnapshot((snapshot)=>{
-            var requestedList = snapshot.docs.map(doc => doc.data());
+        var requestedList=[]
+          this.requestRef = db.collection('requests')
+          .onSnapshot((snapshot)=>{
+           snapshot.docs.map((doc) => { requestedList.push(doc.data())});
             this.setState({
               requestedList : requestedList
             });
-          })
+          });
       }
       
 
@@ -43,7 +45,7 @@ export default class ExchangeScreen extends React.Component{
             subtitle={item.reason_to_request}
             titleStyle={{ color: 'black', fontWeight: 'bold' }}
             rightElement={
-                <TouchableOpacity style={styles.button} onPress={this.props.navigation.navigate('RecieverDetails')}>
+                <TouchableOpacity style={styles.button} onPress={this.props.navigation.navigate('RecieverDetails',{"details": item})}>
                   <Text style={{color:'#ffff'}}>Exchange</Text>
                 </TouchableOpacity>
               }
