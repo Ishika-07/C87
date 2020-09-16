@@ -15,7 +15,9 @@ export default class MyExchanges extends React.Component{
         }
         this.requestRef= null
       }
-     
+
+      static navigationOptions = { header: null };
+      
       componentDidMount(){
         this.getDetails(this.state.id)
         this.getAllExchanges()
@@ -26,7 +28,7 @@ export default class MyExchanges extends React.Component{
         .then((snapshot)=>{
           snapshot.forEach((doc) => {
             this.setState({
-              "name" : doc.data().first_name + " " + doc.data().last_name
+              "name" : doc.data().firstName + " " + doc.data().lastName
             })
           });
         })
