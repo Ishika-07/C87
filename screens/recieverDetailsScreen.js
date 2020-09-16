@@ -58,7 +58,18 @@ import {
           request_status      :  "Interested"
         })
       }
-      
+      addNotification=()=>{
+        var message = this.state.userName + " has shown interest in exchanging"
+        db.collection("notification").add({
+          "targeted_user_id"    : this.state.recieverId,
+          "id"            : this.state.userId,
+          "request_id"          : this.state.requestId,
+          "name"           : this.state.name,
+          "date"                : firebase.firestore.FieldValue.serverTimestamp(),
+          "notification_status" : "unread",
+          "message"             : message
+        })
+      }
       
       
       render(){

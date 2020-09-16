@@ -49,6 +49,43 @@ export default class MyExchanges extends React.Component{
         })
       }
 
+      
+      sendItem=(details)=>{
+        if(details.request_status === "Item Sent"){
+          var requestStatus = "Interested"
+          db.collection("exchanges").doc(details.doc_id).update({
+            "request_status" : "Interested"
+          })
+          this.sendNotification(details,requestStatus)
+        }
+        else{
+          var requestStatus = "Item Sent"
+          db.collection("exchanges").doc(details.doc_id).update({
+            "request_status" : "item Sent"
+          })
+          this.sendNotification(details,requestStatus)
+        }
+      }
+      sendNotification=(details, requestStatus)=>{
+        var requestId = details.request_id
+        var id = details.id
+        db.collection('notification').where('request_id',"==",requestId).where('id','==',id).get().then((snapshot)=>{
+            snapshot.forEach((doc)=>{
+                var message = "";
+                if(requestStatus === "Item Sent"){
+                    message = this.state.name + " sent you item"
+                  }else{
+                     message =  this.state.name  + " has shown interest in exchanging the item"
+                  }
+                db.collection("notification").doc(doc.id).update({
+                    "message": message,
+                    "notification_status" : "unread",
+                    "date"                : firebase.firestore.FieldValue.serverTimestamp()
+                  })
+            })
+            }
+        )
+      }
       keyExtractor =(index)=> index.toString()
 
       renderItem=({item,i})=>{
@@ -58,8 +95,20 @@ export default class MyExchanges extends React.Component{
         subtitle={"Requested By : " + item.requested_by +"\nStatus : " + item.request_status}
         titleStyle={{ color: 'black', fontWeight: 'bold' }}
         rightElement={
-            <TouchableOpacity style={styles.button}>
-                <Text style={{color:'#FF5F49'}}>Exchange Item </Text>
+            <TouchableOpacity  style={[
+              styles.button,
+              {
+                backgroundColor : item.request_status === "Item Sent" ? "green" : "#ff5722"
+              }
+            ]}
+            onPress = {()=>{
+              this.sendItem(item)
+            }}
+           >
+             <Text style={{color:'#ffff'}}>{
+               item.request_status === "Item Sent" ? "Item Sent" : "Send Item"
+             }</Text>
+                
             </TouchableOpacity>
         }
         />
