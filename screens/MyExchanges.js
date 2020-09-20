@@ -35,7 +35,7 @@ export default class MyExchanges extends React.Component{
       }
       
       getAllExchanges =()=>{
-        this.requestRef = db.collection("exchanges").where("id" ,'==', this.state.id)
+        this.requestRef = db.collection("exchanges").where("user_id" ,'==', this.state.id)
         .onSnapshot((snapshot)=>{
           var allExchanges = []
           snapshot.docs.map((doc) =>{

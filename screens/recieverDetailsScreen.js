@@ -19,7 +19,7 @@ import {
               userId: firebase.auth().currentUser.email,
               recieverId    : this.props.navigation.getParam('details')['user_id'],
               requestId     :  this.props.navigation.getParam('details')['request_id'],
-              name        : this.props.navigation.getParam('details')["name"],
+              name        : this.props.navigation.getParam('details')["item_name"],
               reason_for_requesting     : this.props.navigation.getParam('details')["reason_to_request"],
               recieverName    : '',
               recieverContact : '',
@@ -50,6 +50,7 @@ import {
       }
 
       updateStatus=()=>{
+        console.log(this.state.name)
         db.collection('exchanges').add({
           name           : this.state.name,
           request_id          : this.state.requestId,
@@ -119,6 +120,7 @@ import {
                       style={styles.button}
                       onPress={()=>{
                         this.updateStatus()
+                        this.addNotification()
                         this.props.navigation.navigate('MyExchanges')
                       }}>
                     <Text>I want to Exchange</Text>

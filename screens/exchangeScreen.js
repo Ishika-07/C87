@@ -45,7 +45,9 @@ export default class ExchangeScreen extends React.Component{
             subtitle={item.reason_to_request}
             titleStyle={{ color: 'black', fontWeight: 'bold' }}
             rightElement={
-                <TouchableOpacity style={styles.button} onPress={this.props.navigation.navigate('RecieverDetails',{"details": item})}>
+                <TouchableOpacity style={styles.button} onPress={()=>{
+                  this.props.navigation.navigate('RecieverDetails',{"details": item})
+                  }}>
                   <Text style={{color:'#ffff'}}>Exchange</Text>
                 </TouchableOpacity>
               }
