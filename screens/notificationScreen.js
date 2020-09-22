@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, FlatList,TouchableOpacity } from 'react-native'
 
 import {Icon,ListItem} from 'react-native-elements'
 import MyHeader from '../components/MyHeader.js'
+import SwipeableFlatlist from '../components/SwipeableFlatlist'
 import firebase from 'firebase';
 import db from '../config.js'
 
@@ -57,9 +58,11 @@ export default class NotificationScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <View style={{flex:0.1}}>
+              <View style={{flex:0.1}}>
                   <MyHeader
-                  title={'Notifcations'} navigation ={this.props.navigation}/>
+                  title={'Notifcations'}
+                  navigation={this.props.navigation}
+                  />
                 </View>         
                 <View style={{flex:0.9}}>
                     {
@@ -69,11 +72,7 @@ export default class NotificationScreen extends React.Component{
                               <Text style={{fontSize:25}}>You have no notifications</Text>
                             </View>
                           ) :
-                        <FlatList
-                            renderItem={this.renderItem}
-                            keyExtractor={this.keyExtractor}
-                            data={this.state.allNotifications}  
-                        />
+                        <SwipeableFlatlist allNotifications={this.state.allNotifications}/>
                     }
                 </View>
             </View>
