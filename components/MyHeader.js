@@ -39,9 +39,9 @@ export default class MyHeader extends React.Component{
             leftComponent={<Icon name='bars' type='font-awesome' color='#696969' onPress={()=>{
                 this.props.navigation.toggleDrawer()
             }}/>}
-            centerComponent={{ text:this. props.title, style: { color: '#90A5A9', fontSize:20,fontWeight:"bold", } }}
+            centerComponent={{ text:this.props.title, style: { color: 'white', fontSize:20,fontWeight:"bold", } }}
             rightComponent={<this.BellIconWithBadge {...this.props}/>}
-            backgroundColor = "#eaf8fe"
+            backgroundColor = "#FF5F49"
             />
         )
     }

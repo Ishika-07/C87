@@ -38,7 +38,7 @@ export default class RequestScreen extends React.Component{
    render(){
        return(
         <View style={{flex:1}}>
-        <MyHeader title= 'Request Items'/>
+        <MyHeader title= 'Request Items' navigation ={this.props.navigation}/>
         <KeyboardAvoidingView style={styles.keyBoardStyle}>
             <TextInput
             style ={styles.formTextInput}

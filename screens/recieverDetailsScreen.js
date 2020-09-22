@@ -81,6 +81,7 @@ import {
                 leftComponent ={<Icon name='arrow-left' type='feather' color='#696969'  onPress={() => this.props.navigation.goBack()}/>}
                 centerComponent={{ text:"Exchange Items", style: { color: '#90A5A9', fontSize:20,fontWeight:"bold", } }}
                 backgroundColor = "#eaf8fe"
+                navigation ={this.props.navigation}
               />
             </View>
             <View style={{flex:0.3}}>

@@ -59,7 +59,7 @@ export default class NotificationScreen extends React.Component{
             <View style={styles.container}>
                 <View style={{flex:0.1}}>
                   <MyHeader
-                  title={'Notifcations'}/>
+                  title={'Notifcations'} navigation ={this.props.navigation}/>
                 </View>         
                 <View style={{flex:0.9}}>
                     {

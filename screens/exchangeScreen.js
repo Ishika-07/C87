@@ -59,7 +59,7 @@ export default class ExchangeScreen extends React.Component{
     render(){
         return(
             <View style={{flex:1}}>
-                <MyHeader title="Exchange Items" />
+                <MyHeader title="Exchange Items" navigation ={this.props.navigation}/>
                 <View style={{flex:1}}>
                     {
             

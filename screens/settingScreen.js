@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView} from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
+import MyHeader from '../components/MyHeader';
 
 
 export default class SettingScreen extends React.Component{
@@ -60,6 +61,7 @@ export default class SettingScreen extends React.Component{
                 <View>
                     <ScrollView>
                         <KeyboardAvoidingView>
+                        <MyHeader title="Registration" navigation ={this.props.navigation}/>
                             <Text style={{fontWeight: '500',
                                           fontSize:30,
                                           alignSelf:'center',
