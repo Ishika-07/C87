@@ -22,6 +22,10 @@ export default class MyExchanges extends React.Component{
         this.getDetails(this.state.id)
         this.getAllExchanges()
       }
+         
+   componentWillUnmount(){
+    this.requestRef;
+  }
       
       getDetails=(id)=>{
         db.collection("users").where("email_id","==", id).get()
@@ -110,7 +114,9 @@ export default class MyExchanges extends React.Component{
              }</Text>
                 
             </TouchableOpacity>
+            
         }
+        bottomDivider
         />
       }
   
